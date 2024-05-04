@@ -1,0 +1,54 @@
+import json
+import boto3
+from botocore.exceptions import ClientError
+
+# Initialize the DynamoDB and SES clients outside the handler for better performance
+dynamodb = boto3.resource('dynamodb')
+ses = boto3.client('ses')
+
+def lambda_handler(event, context):
+    # Reference the DynamoDB table
+    table = dynamodb.Table('EmailSubscribers')
+
+    # Parse the event body
+    try:
+        body = json.loads(event.get('body', '{}'))
+        email_address = body['email']
+    except (json.JSONDecodeError, KeyError):
+        return {
+            'statusCode': 400,
+            'body': json.dumps({'message': 'Invalid request'})
+        }
+
+    # Insert into DynamoDB
+    try:
+        table.put_item(Item={'email': email_address})
+    except ClientError as e:
+        print(e.response['Error']['Message'])
+        return {
+            'statusCode': 500,
+            'body': json.dumps({'message': 'Could not save to DynamoDB'})
+        }
+    
+    # Send confirmation email
+    try:
+        response = ses.send_email(
+            Source='shobharani1234@gmail.com',  # Replace with your verified SES email
+            Destination={'ToAddresses': [email_address]},
+            Message={
+                'Subject': {'Data': 'Subscription Confirmation'},
+                'Body': {'Text': {'Data': 'Thank you for subscribing!'}}
+            }
+        )
+    except ClientError as e:
+        print(e.response['Error']['Message'])
+        return {
+            'statusCode': 500,
+            'body': json.dumps({'message': 'Could not send confirmation email'})
+        }
+    
+    # Successful response
+    return {
+        'statusCode': 200,
+        'body': json.dumps({'message': 'Subscription successful'})
+    }

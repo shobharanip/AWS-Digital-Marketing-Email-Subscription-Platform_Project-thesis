@@ -1,0 +1,148 @@
+/* General Body Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background: no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+/* Container for each section */
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+}
+
+/* Navigation Styles */
+.navbar {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 0;
+}
+
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    display: inline-block;
+}
+
+/* Main Header */
+header {
+    background: #35424a;
+    color: #ffffff;
+    padding-top: 30px;
+    min-height: 70px;
+    border-bottom: #e8491d 3px solid;
+}
+
+header a {
+    color: #ffffff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 16px;
+}
+
+header ul {
+    padding: 0;
+    list-style: none;
+}
+
+header li {
+    float: left;
+    display: inline;
+    padding: 0 20px 0 20px;
+}
+
+header #branding {
+    float: left;
+}
+
+header #branding h1 {
+    margin: 0;
+}
+
+header nav {
+    float: right;
+    margin-top: 10px;
+}
+
+header .highlight, header .current a {
+    color: #e8491d;
+    font-weight: bold;
+}
+
+header a:hover {
+    color: #ffffff;
+    font-weight: bold;
+}
+
+/* Call to Action Section */
+.cta {
+    color: #fff;
+    background: #e8491d;
+    padding: 20px;
+    text-align: center;
+}
+
+.cta h2 {
+    margin: 0;
+}
+
+/* Form Styles */
+form {
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+form input[type='email'], form select {
+    width: 94%;
+    height: 40px;
+    padding: 5px;
+    margin-bottom: 20px;
+}
+
+form input[type='submit'] {
+    height: 40px;
+    width: 100%;
+    background-color: #e8491d;
+    padding: 5px;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+form input[type='submit']:hover {
+    background-color: #333;
+}
+
+/* Footer Styles */
+footer {
+    background: #35424a;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* Media Queries */
+@media (max-width: 768px){
+    header #branding,
+    header nav,
+    header nav li,
+    .cta h1,
+    .cta p {
+        text-align: center;
+    }
+
+    header nav li {
+        float: none;
+        display: block;
+        padding: 10px;
+    }
+}

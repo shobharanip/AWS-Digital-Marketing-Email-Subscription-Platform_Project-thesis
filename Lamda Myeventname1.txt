@@ -1,0 +1,49 @@
+{
+  "body": "{\"email\":\"shobharani1212@gmail.com\"}",
+  "resource": "/subscribe",
+  "path": "/subscribe",
+  "httpMethod": "POST",
+  "isBase64Encoded": false,
+  "queryStringParameters": null,
+  "multiValueQueryStringParameters": null,
+  "pathParameters": null,
+  "stageVariables": null,
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "multiValueHeaders": {
+    "Content-Type": [
+      "application/json"
+    ]
+  },
+  "requestContext": {
+    "resourceId": "123456",
+    "resourcePath": "/subscribe",
+    "httpMethod": "POST",
+    "extendedRequestId": "request-id-123",
+    "requestTime": "12/Apr/2020:19:03:58 +0000",
+    "path": "/prod/subscribe",
+    "accountId": "123456789012",
+    "protocol": "HTTP/1.1",
+    "stage": "prod",
+    "domainPrefix": "testPrefix",
+    "requestTimeEpoch": 1586721838000,
+    "requestId": "abcdefgh-1234-5678-abcd-1234abcd5678",
+    "identity": {
+      "cognitoIdentityPoolId": null,
+      "accountId": null,
+      "cognitoIdentityId": null,
+      "caller": null,
+      "sourceIp": "123.123.123.123",
+      "principalOrgId": null,
+      "accessKey": null,
+      "cognitoAuthenticationType": null,
+      "cognitoAuthenticationProvider": null,
+      "userArn": null,
+      "userAgent": "Custom User Agent String",
+      "user": null
+    },
+    "domainName": "testPrefix.testDomain.com",
+    "apiId": "abcdefgh"
+  }
+}

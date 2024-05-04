@@ -1,0 +1,29 @@
+import json
+import boto3
+
+def lambda_handler(event, context):
+    dynamodb = boto3.resource('dynamodb')
+    table = dynamodb.Table('EmailSubscribers')
+    ses = boto3.client('ses')
+    
+    # Assuming the body's format is {"email": "<user_email>"}
+    body = json.loads(event['body'])
+    email_address = body['email']
+    
+    # Insert into DynamoDB
+    table.put_item(Item={'email': email_address})
+    
+    # Send confirmation email
+    response = ses.send_email(
+        Source='shobharani12333@gmail.com', # Replace with your verified SES email
+        Destination={'ToAddresses': [email_address]},
+        Message={
+            'Subject': {'Data': 'Subscription Confirmation'},
+            'Body': {'Text': {'Data': 'Thank you for subscribing!'}}
+        }
+    )
+    
+    return {
+        'statusCode': 200,
+        'body': json.dumps({'message': 'Subscription successful'})
+    }

@@ -1,0 +1,39 @@
+document.addEventListener('DOMContentLoaded', function() {
+    
+    const subscriptionForm = document.getElementById('subscription-form');
+    
+    subscriptionForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const formData = new FormData(subscriptionForm);
+        const data = {
+            email formData.get('email'),
+            service formData.get('services')
+        };
+
+        fetch('httpszhfjvhhkhb.execute-api.us-east-1.amazonaws.comprodsubscribe', {
+            method 'POST',
+            headers {
+                'Content-Type' 'applicationjson',
+            },
+            body JSON.stringify(data)
+        })
+        .then(response = {
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(jsonResponse = {
+            if (jsonResponse.success) {
+                window.location.href = 'thankyou.html';
+            } else {
+                alert('Subscription failed ' + jsonResponse.message);
+            }
+        })
+        .catch(error = {
+            console.error('There has been a problem with your fetch operation', error);
+            alert('An error occurred while subscribing. Please try again.');
+        });
+    });
+});
